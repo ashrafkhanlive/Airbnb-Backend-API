@@ -1,6 +1,184 @@
 🏨 Airbnb Backend Clone
 
 A production-ready Airbnb Backend Clone built using **Spring Boot**, **Spring Security**, **JWT Authentication**, **PostgreSQL**, **JPA/Hibernate**, and **Stripe Payment Gateway**.
+If you mean **"How can someone use or run this project after downloading it from GitHub?"**, add this section to your `README.md`.
+
+---
+
+# 🚀 Getting Started
+
+Follow these steps to run the project on your local machine.
+
+## 📋 Prerequisites
+
+Make sure you have installed:
+
+* ☕ Java 21 or later
+* 📦 Maven 3.9+
+* 🐘 PostgreSQL
+* 💻 IntelliJ IDEA / VS Code / Eclipse
+* 🐳 Docker (Optional)
+* 🛠 Git
+
+Verify installation:
+
+```bash
+java -version
+mvn -version
+git --version
+```
+
+---
+
+# 📥 Clone the Repository
+
+```bash
+git clone https://github.com/your-username/airbnb-backend.git
+```
+
+Move into the project directory:
+
+```bash
+cd airbnb-backend
+```
+
+---
+
+# ⚙️ Configure Database
+
+Create a PostgreSQL database:
+
+```sql
+CREATE DATABASE airbnb_db;
+```
+
+Open:
+
+```text
+src/main/resources/application.properties
+```
+
+Update your database settings:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/airbnb_db
+spring.datasource.username=postgres
+spring.datasource.password=your_password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+---
+
+# 🔐 Configure JWT
+
+Add your secret key:
+
+```properties
+jwt.secret=your-super-secret-key
+jwt.expiration=86400000
+```
+
+---
+
+# 💳 Configure Stripe
+
+If you're using Stripe payments:
+
+```properties
+stripe.secret.key=sk_test_xxxxxxxxxxxxxxxxxxxxx
+```
+
+---
+
+# 📦 Install Dependencies
+
+```bash
+mvn clean install
+```
+
+This downloads all required libraries automatically.
+
+---
+
+# ▶️ Run the Application
+
+Using Maven:
+
+```bash
+mvn spring-boot:run
+```
+
+Or run the main class:
+
+```text
+AirBnbApplication.java
+```
+
+The server will start at:
+
+```text
+http://localhost:8080
+```
+
+---
+
+# 📖 Open Swagger UI
+
+Open your browser and visit:
+
+```text
+http://localhost:8080/api/v1/swagger-ui/index.html
+```
+
+From there you can test all available APIs interactively. The uploaded Swagger documentation shows modules for authentication, hotels, rooms, bookings, guests, inventory, and user profiles. 
+
+---
+
+# 🔑 Test the APIs
+
+1. **Sign Up**
+
+```http
+POST /auth/signup
+```
+
+2. **Login**
+
+```http
+POST /auth/login
+```
+
+3. Copy the JWT token from the login response.
+
+4. Click **Authorize** in Swagger.
+
+5. Enter:
+
+```text
+Bearer YOUR_JWT_TOKEN
+```
+
+6. Now you can access protected endpoints.
+
+---
+
+# 🐳 Run with Docker (Optional)
+
+Build the Docker image:
+
+```bash
+docker build -t airbnb-backend .
+```
+
+Run the container:
+
+```bash
+docker run -p 8080:8080 airbnb-backend
+```
+
+---
 
 This project provides REST APIs for hotel management, room management, booking flow, inventory management, user authentication, and payment integration.
 
